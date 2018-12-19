@@ -25,7 +25,7 @@ public class TestDbServlet extends HttpServlet {
 		String user = "sa";
 		String password = "";
 
-		String jdbcURL = "jdbc:h2:~/test";
+		String jdbcURL = "jdbc:h2:C:/database/h2/spaceagencydatahub";
 		String driver = "org.h2.Driver";
 
 		try {
