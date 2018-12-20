@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.spaceagencydatahub.entity.Product;
@@ -21,10 +22,14 @@ public class ProductController {
 	@Autowired
 	private ProductService productService;
 
-
 	@GetMapping("/products")
 	public List<Product> getProducts() {
 		return productService.getAll();
+	}
+
+	@GetMapping("/product")
+	public List<Product> getProduct(@RequestParam(value = "id") List<Integer> ids) {
+		return productService.getMultipleProducts(ids);
 	}
 
 	@PostMapping("/products")

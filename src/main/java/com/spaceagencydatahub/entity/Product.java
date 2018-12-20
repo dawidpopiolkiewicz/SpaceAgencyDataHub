@@ -1,7 +1,7 @@
 package com.spaceagencydatahub.entity;
 
 import java.net.URL;
-import java.sql.Date;
+import java.time.OffsetDateTime;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -23,7 +23,7 @@ public class Product {
 	private String mission_name;
 
 	@Column(name = "acquisition_date")
-	private Date acquisitionDate;
+	private OffsetDateTime acquisitionDate;
 
 	@Column(name = "price")
 	private double price;
@@ -55,11 +55,11 @@ public class Product {
 		this.price = price;
 	}
 
-	public Date getAcquisitionDate() {
+	public OffsetDateTime getAcquisitionDate() {
 		return acquisitionDate;
 	}
 
-	public void setAcquisitionDate(Date acquisitionDate) {
+	public void setAcquisitionDate(OffsetDateTime acquisitionDate) {
 		this.acquisitionDate = acquisitionDate;
 	}
 

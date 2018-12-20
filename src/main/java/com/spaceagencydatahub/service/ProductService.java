@@ -36,4 +36,10 @@ public class ProductService implements GenericService<Product> {
 		productDAO.delete(id);
 	}
 
+	@Transactional
+	public List<Product> getMultipleProducts(List<Integer> ids){
+		return productDAO.getMultipleProducts(ids);
+	}
+	
+	
 }
