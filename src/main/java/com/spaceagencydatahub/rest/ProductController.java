@@ -1,5 +1,7 @@
 package com.spaceagencydatahub.rest;
 
+import java.time.OffsetDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -23,13 +25,16 @@ public class ProductController {
 	private ProductService productService;
 
 	@GetMapping("/products")
-	public List<Product> getProducts() {
-		return productService.getAll();
-	}
-
-	@GetMapping("/product")
 	public List<Product> getProduct(@RequestParam(value = "id") List<Integer> ids) {
 		return productService.getMultipleProducts(ids);
+	}
+
+	@GetMapping("/products/search")
+	public List<Product> searchProduct(@RequestParam(value = "missionName") String missionName,
+			@RequestParam(value = "productType") String productType,
+			@RequestParam(value = "acquisitionDate") OffsetDateTime acquisitionDate
+	) {
+		return productService.searchProduct(missionName, productType, acquisitionDate);
 	}
 
 	@PostMapping("/products")

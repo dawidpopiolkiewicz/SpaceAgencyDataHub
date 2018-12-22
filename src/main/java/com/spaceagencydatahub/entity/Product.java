@@ -4,6 +4,7 @@ import java.net.URL;
 import java.time.OffsetDateTime;
 
 import javax.persistence.Column;
+import javax.persistence.Embedded;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -25,6 +26,9 @@ public class Product {
 	@Column(name = "acquisition_date")
 	private OffsetDateTime acquisitionDate;
 
+	@Embedded
+	private Footprint footprint;
+
 	@Column(name = "price")
 	private double price;
 
@@ -45,6 +49,14 @@ public class Product {
 
 	public void setMission_name(String mission_name) {
 		this.mission_name = mission_name;
+	}
+
+	public Footprint getFootprint() {
+		return footprint;
+	}
+
+	public void setFootprint(Footprint footprint) {
+		this.footprint = footprint;
 	}
 
 	public double getPrice() {
