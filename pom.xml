@@ -9,8 +9,16 @@
 	<name>SpaceAgencyDataHub Maven Webapp</name>
 	<url>http://maven.apache.org</url>
 	<properties>
+		<hibernate-core>5.3.7.Final</hibernate-core>
+		<h2>1.4.194</h2>
+		<jackson-databind>2.9.5</jackson-databind>
+		<jackson-datatype-jsr310>2.9.7</jackson-datatype-jsr310>
+		<javax.servlet-api>3.1.0</javax.servlet-api>
+		<jaxb-api>2.1</jaxb-api>
+		<junit>3.8.1</junit>
 		<maven.compiler.source>1.8</maven.compiler.source>
 		<maven.compiler.target>1.8</maven.compiler.target>
+		<spring.framework>5.0.6.RELEASE</spring.framework>
 	</properties>
 
 
@@ -18,21 +26,21 @@
 		<dependency>
 			<groupId>org.springframework</groupId>
 			<artifactId>spring-context</artifactId>
-			<version>5.0.6.RELEASE</version>
+			<version>${spring.framework}</version>
 		</dependency>
 
 		<!-- https://mvnrepository.com/artifact/org.springframework/spring-webmvc -->
 		<dependency>
 			<groupId>org.springframework</groupId>
 			<artifactId>spring-webmvc</artifactId>
-			<version>5.0.6.RELEASE</version>
+			<version>${spring.framework}</version>
 		</dependency>
 
 		<!-- https://mvnrepository.com/artifact/org.springframework/spring-web -->
 		<dependency>
 			<groupId>org.springframework</groupId>
 			<artifactId>spring-web</artifactId>
-			<version>5.0.6.RELEASE</version>
+			<version>${spring.framework}</version>
 		</dependency>
 
 
@@ -40,52 +48,52 @@
 		<dependency>
 			<groupId>org.springframework</groupId>
 			<artifactId>spring-orm</artifactId>
-			<version>5.0.6.RELEASE</version>
+			<version>${spring.framework}</version>
 		</dependency>
 
 		<!-- https://mvnrepository.com/artifact/org.springframework.security/spring-security-config -->
 		<dependency>
 			<groupId>org.springframework.security</groupId>
 			<artifactId>spring-security-config</artifactId>
-			<version>5.0.6.RELEASE</version>
+			<version>${spring.framework}</version>
 		</dependency>
 		
 		<!-- https://mvnrepository.com/artifact/org.springframework.security/spring-security-web -->
 		<dependency>
 			<groupId>org.springframework.security</groupId>
 			<artifactId>spring-security-web</artifactId>
-			<version>5.0.6.RELEASE</version>
+			<version>${spring.framework}</version>
 		</dependency>
 
 		<!-- https://mvnrepository.com/artifact/org.springframework/spring-tx -->
 		<dependency>
 			<groupId>org.springframework</groupId>
 			<artifactId>spring-tx</artifactId>
-			<version>5.0.6.RELEASE</version>
+			<version>${spring.framework}</version>
 		</dependency>
 		<dependency>
 			<groupId>javax.servlet</groupId>
 			<artifactId>javax.servlet-api</artifactId>
-			<version>3.1.0</version>
+			<version>${javax.servlet-api}</version>
 		</dependency>
 
 		<dependency>
 			<groupId>com.fasterxml.jackson.core</groupId>
 			<artifactId>jackson-databind</artifactId>
-			<version>2.9.5</version>
+			<version>${jackson-databind}</version>
 		</dependency>
 		<!-- https://mvnrepository.com/artifact/com.fasterxml.jackson.datatype/jackson-datatype-jsr310 -->
 		<dependency>
 			<groupId>com.fasterxml.jackson.datatype</groupId>
 			<artifactId>jackson-datatype-jsr310</artifactId>
-			<version>2.9.7</version>
+			<version>${jackson-datatype-jsr310}</version>
 		</dependency>
 
 		<!-- https://mvnrepository.com/artifact/com.h2database/h2 -->
 		<dependency>
 			<groupId>com.h2database</groupId>
 			<artifactId>h2</artifactId>
-			<version>1.4.194</version>
+			<version>${h2}</version>
 		</dependency>
 
 
@@ -94,7 +102,7 @@
 		<dependency>
 			<groupId>javax.xml.bind</groupId>
 			<artifactId>jaxb-api</artifactId>
-			<version>2.1</version>
+			<version>${jaxb-api}</version>
 		</dependency>
 
 
@@ -102,15 +110,13 @@
 		<dependency>
 			<groupId>org.hibernate</groupId>
 			<artifactId>hibernate-core</artifactId>
-			<version>5.3.7.Final</version>
+			<version>${hibernate-core}</version>
 		</dependency>
-
-
 
 		<dependency>
 			<groupId>junit</groupId>
 			<artifactId>junit</artifactId>
-			<version>3.8.1</version>
+			<version>${junit}</version>
 			<scope>test</scope>
 		</dependency>
 	</dependencies>
