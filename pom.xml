@@ -15,9 +15,10 @@
 		<jackson-datatype-jsr310>2.9.7</jackson-datatype-jsr310>
 		<javax.servlet-api>3.1.0</javax.servlet-api>
 		<jaxb-api>2.1</jaxb-api>
-		<junit>3.8.1</junit>
+		<junit>4.12</junit>
 		<maven.compiler.source>1.8</maven.compiler.source>
 		<maven.compiler.target>1.8</maven.compiler.target>
+		<mockito-core>2.23.4</mockito-core>
 		<spring.framework>5.0.6.RELEASE</spring.framework>
 	</properties>
 
@@ -57,7 +58,7 @@
 			<artifactId>spring-security-config</artifactId>
 			<version>${spring.framework}</version>
 		</dependency>
-		
+
 		<!-- https://mvnrepository.com/artifact/org.springframework.security/spring-security-web -->
 		<dependency>
 			<groupId>org.springframework.security</groupId>
@@ -71,6 +72,17 @@
 			<artifactId>spring-tx</artifactId>
 			<version>${spring.framework}</version>
 		</dependency>
+
+		<!-- https://mvnrepository.com/artifact/org.springframework/spring-test -->
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-test</artifactId>
+			<version>${spring.framework}</version>
+			<scope>test</scope>
+		</dependency>
+
+
+
 		<dependency>
 			<groupId>javax.servlet</groupId>
 			<artifactId>javax.servlet-api</artifactId>
@@ -113,12 +125,24 @@
 			<version>${hibernate-core}</version>
 		</dependency>
 
+		<!-- https://mvnrepository.com/artifact/org.mockito/mockito-core -->
+		<dependency>
+			<groupId>org.mockito</groupId>
+			<artifactId>mockito-core</artifactId>
+			<version>${mockito-core}</version>
+			<scope>test</scope>
+		</dependency>
+
+
+		<!-- https://mvnrepository.com/artifact/junit/junit -->
 		<dependency>
 			<groupId>junit</groupId>
 			<artifactId>junit</artifactId>
 			<version>${junit}</version>
 			<scope>test</scope>
 		</dependency>
+
+
 	</dependencies>
 	<build>
 		<finalName>SpaceAgencyDataHub</finalName>
