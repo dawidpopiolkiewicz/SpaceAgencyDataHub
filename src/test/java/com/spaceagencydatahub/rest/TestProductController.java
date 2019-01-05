@@ -34,18 +34,24 @@ public class TestProductController {
 	public TestWatcher testWatcher = new TestWatcher() {
 
 		@Override
+		protected void starting(Description description) {
+			logger.info(description.getMethodName() + " " + "started");
+		
+		}
+
+		@Override
 		protected void succeeded(Description description) {
-			logger.info(description.getMethodName() + " " + "success!");
+			logger.info(description.getMethodName() + " " + "success");
 		}
 
 		@Override
 		protected void failed(Throwable e, Description description) {
-			logger.info(description.getMethodName() + " Failed!" + " " + e.getMessage());
+			logger.warning(description.getMethodName() + " "+"FAILED!" + " " + e.getMessage());
 		}
 
 		@Override
 		protected void finished(Description description) {
-			 logger.info("Completed!");
+			logger.info(description.getMethodName() + " " + "completed");
 		}
 
 	};
@@ -64,7 +70,7 @@ public class TestProductController {
 	}
 
 	@Test
-	public void findById() throws Exception {
+	public void testFindById() throws Exception {
 		this.mockMvc.perform(get("/api/products?id=1")).andExpect(status().isOk());
 	}
 
@@ -74,7 +80,7 @@ public class TestProductController {
 	}
 
 	@Test
-	public void addProduct() throws Exception {
+	public void testAddProduct() throws Exception {
 		OffsetDateTime offSetDateTime = OffsetDateTime.now();
 		URL url = new URL("http://example.com/");
 		Footprint footprint = new Footprint();
