@@ -18,7 +18,7 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 @Configuration
 @EnableWebMvc
 @EnableTransactionManagement(proxyTargetClass = true)
-@ComponentScan(basePackages = "com.spaceagencydatahub")
+@ComponentScan(basePackages = {"com.spaceagencydatahub.config","com.spaceagencydatahub.rest","com.spaceagencydatahub.service","com.spaceagencydatahub.dao","com.spaceagencydatahub.entity","com.spaceagencydatahub.util"})
 public class ApplicationConfiguration implements WebMvcConfigurer {
 
     @Bean
