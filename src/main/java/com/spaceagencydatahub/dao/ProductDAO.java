@@ -33,8 +33,10 @@ public class ProductDAO implements GenericDAO<Product> {
 
 	public List<Product> searchProduct(String missionName, String productType, OffsetDateTime acquisitionDate) {
 		Session session = sessionFactory.getCurrentSession();
-		List<Product> products = session.createQuery("").setParameter("missionName", missionName)
-				.setParameter("acquisitionDate", acquisitionDate).setParameter("productType", productType)
+		List<Product> products = session.createQuery("")
+				.setParameter("missionName", missionName)
+				.setParameter("acquisitionDate", acquisitionDate)
+				.setParameter("productType", productType)
 				.getResultList();
 		return products;
 	}
