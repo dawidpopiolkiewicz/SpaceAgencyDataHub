@@ -1,6 +1,7 @@
 package com.spaceagencydatahub.dao;
 
 import java.time.OffsetDateTime;
+import java.util.Date;
 import java.util.List;
 
 import org.hibernate.Session;
@@ -31,11 +32,11 @@ public class ProductDAO implements GenericDAO<Product> {
 		return multipleProducts;
 	}
 
-	public List<Product> searchProduct(String missionName, String productType, OffsetDateTime acquisitionDate) {
+	public List<Product> searchProduct(String missionName, String productType, Date date) {
 		Session session = sessionFactory.getCurrentSession();
 		List<Product> products = session.createQuery("")
 				.setParameter("missionName", missionName)
-				.setParameter("acquisitionDate", acquisitionDate)
+				.setParameter("acquisitionDate", date)
 				.setParameter("productType", productType)
 				.getResultList();
 		return products;
