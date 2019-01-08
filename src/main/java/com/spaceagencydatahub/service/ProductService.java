@@ -2,6 +2,7 @@ package com.spaceagencydatahub.service;
 
 import java.time.OffsetDateTime;
 import java.time.ZonedDateTime;
+import java.util.Date;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -54,7 +55,7 @@ public class ProductService implements GenericService<Product> {
 	
 	@Transactional
 	public List<Product> searchProduct(String missionName, String productType,
-			OffsetDateTime acquisitionDate) {
-		return productDAO.searchProduct(missionName, productType, acquisitionDate);
+			Date date) {
+		return productDAO.searchProduct(missionName, productType, date);
 	}
 }
