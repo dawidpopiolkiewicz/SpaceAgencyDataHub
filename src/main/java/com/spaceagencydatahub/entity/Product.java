@@ -1,7 +1,7 @@
 package com.spaceagencydatahub.entity;
 
 import java.net.URL;
-import java.time.OffsetDateTime;
+import java.util.Date;
 
 import javax.persistence.Column;
 import javax.persistence.Embedded;
@@ -10,6 +10,8 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
+
+import com.fasterxml.jackson.annotation.JsonFormat;
 
 @Entity
 @Table(name = "product")
@@ -24,7 +26,9 @@ public class Product {
 	private String mission_name;
 
 	@Column(name = "acquisition_date")
-	private OffsetDateTime acquisitionDate;
+	@JsonFormat
+    (shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd'T'HH:mm:ss")
+	private Date acquisitionDate;
 
 	@Embedded
 	private Footprint footprint;
@@ -67,11 +71,11 @@ public class Product {
 		this.price = price;
 	}
 
-	public OffsetDateTime getAcquisitionDate() {
+	public Date getAcquisitionDate() {
 		return acquisitionDate;
 	}
 
-	public void setAcquisitionDate(OffsetDateTime acquisitionDate) {
+	public void setAcquisitionDate(Date acquisitionDate) {
 		this.acquisitionDate = acquisitionDate;
 	}
 

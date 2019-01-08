@@ -1,6 +1,6 @@
 package com.spaceagencydatahub.entity;
 
-import java.time.OffsetDateTime;
+import java.util.Date;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -9,6 +9,8 @@ import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+
+import com.fasterxml.jackson.annotation.JsonFormat;
 
 @Entity
 public class Mission {
@@ -24,10 +26,14 @@ public class Mission {
 	private ImageryType imageryType;
 	
 	@Column(name = "start_date")
-	private OffsetDateTime startDate;
+	@JsonFormat
+    (shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd'T'HH:mm:ss")
+	private Date startDate;
 	
 	@Column(name = "finish_date")
-	private OffsetDateTime finishDate;
+	@JsonFormat
+    (shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd'T'HH:mm:ss")
+	private Date finishDate;
 
 	public String getName() {
 		return name;
@@ -45,19 +51,19 @@ public class Mission {
 		this.imageryType = imageryType;
 	}
 
-	public OffsetDateTime getStartDate() {
+	public Date getStartDate() {
 		return startDate;
 	}
 
-	public void setStartDate(OffsetDateTime startDate) {
+	public void setStartDate(Date startDate) {
 		this.startDate = startDate;
 	}
 
-	public OffsetDateTime getFinishDate() {
+	public Date getFinishDate() {
 		return finishDate;
 	}
 
-	public void setFinishDate(OffsetDateTime finishDate) {
+	public void setFinishDate(Date finishDate) {
 		this.finishDate = finishDate;
 	}
 
