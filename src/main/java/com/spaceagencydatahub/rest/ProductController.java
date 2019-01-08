@@ -1,11 +1,10 @@
 package com.spaceagencydatahub.rest;
 
-import java.time.OffsetDateTime;
+import java.util.Date;
 import java.util.List;
 import java.util.logging.Logger;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.context.annotation.Bean;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -17,7 +16,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.spaceagencydatahub.entity.Product;
 import com.spaceagencydatahub.service.ProductService;
-import com.spaceagencydatahub.util.OffsetDateTimeConverterUtil;
+import com.spaceagencydatahub.util.DateTimeConverterUtil;
 
 @RestController
 @RequestMapping("/api")
@@ -27,7 +26,7 @@ public class ProductController {
 	private ProductService productService;
 
 	@Autowired
-	private OffsetDateTimeConverterUtil offSetDateTimeConverterUtil;
+	private DateTimeConverterUtil dateTimeConverterUtil;
 
 	private static Logger logger = Logger.getLogger(ProductController.class.getName());
 
@@ -39,11 +38,11 @@ public class ProductController {
 	@GetMapping("/products/search")
 	public List<Product> searchProduct(@RequestParam(value = "missionName") String missionName,
 			@RequestParam(value = "productType") String productType,
-			@RequestParam(value = "acquisitionDate") String date) {
+			@RequestParam(value = "acquisitionDate") String acquisitionDate) {
 
-		OffsetDateTime acquisitionDate = offSetDateTimeConverterUtil.convertStringToOffsetDateTime(date);
-		logger.info("OffsetDateTime: "+ acquisitionDate);
-		return productService.searchProduct(missionName, productType, acquisitionDate);
+		Date date = dateTimeConverterUtil.convertStringToDateTime(acquisitionDate);
+		logger.info("Date "+ acquisitionDate);
+		return productService.searchProduct(missionName, productType, date);
 	}
 
 	@PostMapping("/products")
