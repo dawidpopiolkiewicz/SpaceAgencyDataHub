@@ -4,7 +4,7 @@ import static org.springframework.test.web.servlet.request.MockMvcRequestBuilder
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
-import java.time.OffsetDateTime;
+import java.util.Date;
 import java.util.logging.Logger;
 
 import org.junit.Before;
@@ -43,7 +43,7 @@ public class TestMissionController {
 
 		@Override
 		protected void failed(Throwable e, Description description) {
-			logger.warning(description.getMethodName() + " "+"FAILED!" + " " + e.getMessage());
+			logger.warning(description.getMethodName() + " " + "FAILED!" + " " + e.getMessage());
 		}
 
 		@Override
@@ -59,36 +59,34 @@ public class TestMissionController {
 	@Mock
 	private MissionService missionService;
 
+	private ObjectMapper objectMapper;
+
 	private MockMvc mockMvc;
 
 	@Before
 	public void setup() {
+		objectMapper = new ObjectMapper();
 		MockitoAnnotations.initMocks(this);
 		this.mockMvc = MockMvcBuilders.standaloneSetup(missionController).build();
 	}
 
 	@Test
 	public void testAddMission() throws Exception {
-		OffsetDateTime offSetDateTime = OffsetDateTime.now();
-		ObjectMapper objectMapper = new ObjectMapper();
 
-		Mission mission = new Mission();
+		String missionJson = "{\r\n" + "		\"name\": \"test_mission\",\r\n"
+				+ "        \"imageryType\": \"Hyperspectral\",\r\n"
+				+ "        \"startDate\": \"2019-01-06T11:54:16+00:00\",\r\n"
+				+ "        \"finishDate\": \"2019-01-06T11:54:16+00:00\"\r\n" + "    }";
 
-		mission.setImageryType(ImageryType.Hyperspectral);
-		mission.setName("mission1");
-		mission.setStartDate(offSetDateTime);
-		mission.setFinishDate(offSetDateTime);
+		Mission mission = objectMapper.readValue(missionJson, Mission.class);
 
 		this.mockMvc.perform(post("/api/missions").contentType(MediaType.APPLICATION_JSON)
-				.content(objectMapper.writeValueAsString(mission)))
-				.andExpect(status().isOk());
+				.content(objectMapper.writeValueAsString(mission))).andExpect(status().isOk());
 	}
-	
+
 	@Test
 	public void testDeleteMission() throws Exception {
-		this.mockMvc.perform(delete("/api/missions/{missionId}", 1))
-		.andExpect(status().isOk());
+		this.mockMvc.perform(delete("/api/missions/{missionId}", 1)).andExpect(status().isOk());
 	}
-	
 
 }
